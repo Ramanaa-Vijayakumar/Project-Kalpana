@@ -10,12 +10,12 @@ Electronics and Automation_Task Phase
 - Controlled via a single button
 - Uses `analogWrite()` for PWM LED control
 
-### 2️⃣ [4-Bit Up Counter Using LEDs](./Task-2/Project-2-4BitCounter)
+### 2️⃣ [4-Bit Up Counter Using LEDs](./Task-2/Project-2-UpCounter)
 - Counts from **0 to 15** in binary
 - Uses 4 LEDs to display output
 - Demonstrates bitwise operations
 
-### 3️⃣ [7-Segment Display Counter (00 to 40 and Back)](./Task-2/Project-3-7SegmentDisplay)
+### 3️⃣ [7-Segment Display Counter (00 to 40 and Back)](./Task-2/Project-3-7Segment)
 - Displays two-digit numbers (00 to 40 and back)
 - Uses 2 × 7-segment displays
 - Highlights digit pattern encoding
