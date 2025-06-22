@@ -1,28 +1,41 @@
-int led = 11;
-int button = 10;
+const int led = 11;
+const int button = 10;
 
-int brightness = 0;
-int step = 80;
+const int brightnessLevels[3] = {0, 125, 255};
+int levelIndex = 0;
+
+unsigned long lastDebounceTime = 0;
+const unsigned long debounceDelay = 50;
 
 bool lastButtonState = LOW;
+bool currentButtonState;
+bool buttonPressed = false;
 
 void setup(){
   pinMode(led, OUTPUT);
   pinMode(button, INPUT);
-  analogWrite(led, brightness);
+  analogWrite(led, brightnessLevels[levelIndex]);
 }
 
 void loop(){
-  bool currentButtonState = digitalRead(button);
+  bool reading = digitalRead(button);
 
-  if (currentButtonState == HIGH && lastButtonState == LOW){
-    brightness += step;
-    if (brightness > 255){
-      brightness = step;
-    }
-    analogWrite(led, brightness);
-    delay(50);
+  if (reading != lastButtonState){
+    lastDebounceTime = millis();
   }
 
-  lastButtonState = currentButtonState;
+  if ((millis() - lastDebounceTime) > debounceDelay){
+    if (reading == HIGH && !buttonPressed){
+      buttonPressed = true;
+
+      levelIndex = (levelIndex + 1) % 3;
+      analogWrite(led, brightnessLevels[levelIndex]);
+    }
+  }
+
+  if (reading == LOW){
+    buttonPressed = false;
+  }
+
+  lastButtonState = reading;
 }

@@ -79,5 +79,4 @@ void loop(){
 
 ## Simulation
 
- [Tinkercad Simulation - 7 Segment Display Counter](https://www.tinkercad.com/things/5ftLmVc00a8-7-segment-display-counter/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard)
-
+[Tinkercad Simulation - 7 Segment Display Counter](https://www.tinkercad.com/things/5ftLmVc00a8-7-segment-display-counter)

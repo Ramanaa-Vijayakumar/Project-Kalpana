@@ -20,45 +20,60 @@ This project demonstrates how to control the **brightness of an LED** using a **
 
 ## Circuit Explanation
 
-- The **LED** is connected to **pin 11** (PWM output), allowing brightness control using `analogWrite()`.
-- The **button** is connected to **pin 10** and is used to cycle through brightness levels.
-- Each button press increases the brightness. Once it passes the maximum (`255`), it loops back to the first level.
+- The **LED** is connected to **pin 11**, which supports PWM (Pulse Width Modulation) for brightness control via `analogWrite()`.
+- The **push button** is connected to **pin 10**.
+- Each press of the button cycles the LED brightness through three levels: `0` (off), `125` (medium), and `255` (full brightness).
+- Debouncing is implemented in code to prevent multiple triggers from a single press.
 
 ---
 
 ## Code
 
 ```cpp
-int led = 11;
-int button = 10;
+const int led = 11;
+const int button = 10;
 
-int brightness = 0;
-int step = 80;
+const int brightnessLevels[3] = {0, 125, 255};
+int levelIndex = 0;
+
+unsigned long lastDebounceTime = 0;
+const unsigned long debounceDelay = 50;
 
 bool lastButtonState = LOW;
+bool currentButtonState;
+bool buttonPressed = false;
 
 void setup(){
   pinMode(led, OUTPUT);
   pinMode(button, INPUT);
-  analogWrite(led, brightness);
+  analogWrite(led, brightnessLevels[levelIndex]);
 }
 
 void loop(){
-  bool currentButtonState = digitalRead(button);
+  bool reading = digitalRead(button);
 
-  if (currentButtonState == HIGH && lastButtonState == LOW){
-    brightness += step;
-    if (brightness > 255){
-      brightness = step;
-    }
-    analogWrite(led, brightness);
-    delay(50);
+  if (reading != lastButtonState){
+    lastDebounceTime = millis();
   }
 
-  lastButtonState = currentButtonState;
+  if ((millis() - lastDebounceTime) > debounceDelay){
+    if (reading == HIGH && !buttonPressed){
+      buttonPressed = true;
+
+      levelIndex = (levelIndex + 1) % 3;
+      analogWrite(led, brightnessLevels[levelIndex]);
+    }
+  }
+
+  if (reading == LOW){
+    buttonPressed = false;
+  }
+
+  lastButtonState = reading;
 }
+
 ```
 
 ## Simulation
 
-[Tinkercad Simulation - LED Brightness Control](https://www.tinkercad.com/things/7ZZD9IJRQOg-controlling-led-brightness-with-a-button/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard)
+[Tinkercad Simulation - LED Brightness Control](https://www.tinkercad.com/things/7ZZD9IJRQOg-controlling-led-brightness-with-a-button)

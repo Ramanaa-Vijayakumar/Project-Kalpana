@@ -53,5 +53,4 @@ void loop(){
 
 ## Simulation
 
-[Tinkercad Simulation - 4-Bit Up Counterl](https://www.tinkercad.com/things/08Lvx1YWLgN-4-bit-up-counter-using-leds/editel?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard)
-
+[Tinkercad Simulation - 4-Bit Up Counterl](https://www.tinkercad.com/things/08Lvx1YWLgN-4-bit-up-counter-using-leds)
