@@ -1,4 +1,4 @@
-# Project 1: Controlling LED Brightness with a Button (3 Levels)
+# Controlling LED Brightness with a Button (3 Levels)
 
 ## Overview
 
