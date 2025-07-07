@@ -1,4 +1,4 @@
-# Project 1: Bouncing Counter on a 7-Segment Clock Peripheral
+# Bouncing Counter on a 7-Segment Clock Peripheral
 
 ## Overview
 
