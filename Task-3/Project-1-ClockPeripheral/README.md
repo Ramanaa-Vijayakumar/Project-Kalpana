@@ -18,7 +18,7 @@ This project demonstrates how to implement a simple bouncing counter using a 4-d
 
 ## Circuit Explanation
 
-- The 7-segment display used is an I2C-compatible module from Adafruit, which simplifies wiring and communication. It connects to the Arduino via the SDA and SCL pins (A4 and A5 on an Uno). The Adafruit_LEDBackpack and Adafruit_GFX libraries are used to control the display.
+- The 7-segment display used is an I2C-compatible module from Adafruit, which simplifies wiring and communication. It connects to the Arduino via the `SDA` and `SCL` pins (A4 and A5 on an Uno). The `Adafruit_LEDBackpack` and `Adafruit_GFX` libraries are used to control the display.
 - The counter value is updated every 200 milliseconds. It increases by 1 until it reaches 40, then reverses and decreases by 1 until it reaches 0, creating a "bouncing" numeric effect. The display brightness is set to maximum (15) for clear visibility.
 
 ---
