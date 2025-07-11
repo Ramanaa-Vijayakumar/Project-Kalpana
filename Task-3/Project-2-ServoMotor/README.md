@@ -37,7 +37,6 @@ void loop(){
   delay(1500);
   myServo.write(angle);
   delay(1500);
-  myServo.write(0);
 }
 
 
